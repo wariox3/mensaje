@@ -44,9 +44,9 @@ class SubGrupoController extends  Controller
             }
 
             if($form->get('btnEliminar')->isClicked()){
-                $arGrupo = $request->request->get('ChkSeleccionar');
-                $this->get("UtilidadesModelo")->eliminar(Grupo::class, $arGrupo);
-
+                $arSubGrupo = $request->request->get('ChkSeleccionar');
+                $this->get("UtilidadesModelo")->eliminar( Subgrupo::class, $arSubGrupo);
+                return $this->redirect($this->generateUrl('subGrupo_lista'));
             }
         }
 

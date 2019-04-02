@@ -19,6 +19,7 @@ class Modelo
     }
 
     public function eliminar($entidad, $arrSeleccionados){
+        //dd($entidad);
         try{
             $em = $this->em;
              if ($arrSeleccionados && is_array($arrSeleccionados)) {
