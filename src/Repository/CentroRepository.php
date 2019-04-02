@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Centro;
+use App\Entity\Cliente;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CentroRepository extends ServiceEntityRepository
 {
@@ -13,5 +15,17 @@ class CentroRepository extends ServiceEntityRepository
         parent::__construct($registry, Centro::class);
     }
 
+    public function listaCentro($codigoCLiente)
+    {
+        $session = new Session();
 
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder()->from(Centro::class, 'ce')
+            ->select('ce.codigoCentroPk')
+            ->addSelect('ce.nombre')
+            ->leftJoin('ce.clienteRel' , 'cl')
+            ->where('cl.codigoClientePk = ' . $codigoCLiente);
+
+        return $queryBuilder;
+
+    }
 }

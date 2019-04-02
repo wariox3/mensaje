@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Centro;
 use App\Entity\Cliente;
 
 
+use App\Form\Type\CentroType;
 use App\Utilidades\Modelo;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -80,16 +82,59 @@ class ClienteController extends  Controller
     public function detalle(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $paginator = $this->get('knp_paginator');
         $arCliente = $em->getRepository(Cliente::class)->find($id);
-        $form = $this->createFormBuilder()->getForm();
+        $form = $this->createFormBuilder()
+            ->add('btnEliminarCentro', SubmitType::class, ['label' => 'Eliminar', 'attr' => ['class' => 'btn btn-sm btn-default']])
+        ->getForm();
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('btnEliminarCentro')->isClicked()) {
+                $arrClientesSeleccionados = $request->request->get('ChkSeleccionarCentros');
+                $this->get("UtilidadesModelo")->eliminar(Cliente::class, $arrClientesSeleccionados);
+            }
+
             return $this->redirect($this->generateUrl('cliente_detalle', ['id' => $id]));
         }
+
+        $arCentros = $paginator->paginate($em->getRepository(Centro::class)->listaCentro($id), $request->query->getInt('page', 1), 30);
+
         return $this->render('Cliente/detalle.html.twig', [
             'form' => $form->createView(),
             'arCliente' => $arCliente,
+            'arCentros' => $arCentros
+        ]);
+    }
+
+    /**
+     * @Route("/admin/cliente/centro/nuevo/{id}/{codigoCliente}", name="cliente_centro_nuevo")
+     */
+    public function nuevoCentro(Request $request, $id, $codigoCliente)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $arCliente = $em->getRepository(Cliente::class)->find($codigoCliente);
+        $arCentro = new Centro();
+        if ($id != 0) {
+            $arCentro = $em->getRepository(Centro::class)->find($id);
+        } else {
+            $arCentro->setClienteRel($arCliente);
+        }
+        $form = $this->createForm(CentroType::class, $arCentro);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->get('guardar')->isClicked()) {
+                $arCentro = $form->getData();
+                $em->persist($arCentro);
+                $em->flush();
+                echo "<script languaje='javascript' type='text/javascript'>window.close();window.opener.location.reload();</script>";
+            }
+        }
+        return $this->render('Cliente/nuevoCentro.html.twig', [
+            'arCentro' => $arCentro,
+            'form' => $form->createView()
         ]);
 
     }
+
 }

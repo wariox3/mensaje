@@ -170,7 +170,7 @@ class NormaController extends Controller
 
             }
             if ($form->get('btnEliminarVigencia')->isClicked()) {
-                $arrVigenciasSeleccionados = $request->request->get('ChkSeleccionarVigencias');
+                $arrVigenciasSeleccionados = $request->request->get('ChkSeleccionarCentros');
                 $this->get("UtilidadesModelo")->eliminar(Vigencia::class, $arrVigenciasSeleccionados);
 
             }

@@ -17,5 +17,57 @@
             <td class="td-in-well">{{ arCliente.nombreCorto }}</td>
         </tr>
     </table>
+    <br>
+    <div class="tabs tabs-primary">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#centros" data-toggle="tab"><i class="fa fa-star"></i> Centros</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="centros" class="tab-pane active">
+                <section class="panel">
+                    <div class="panel-body">
+                        <table class="table table-condensed table-bordered table-hover mb-none">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Nombre</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for arCentro in arCentros %}
+                                <tr>
+                                    <td>{{ arCentro.codigoCentroPk }}</td>
+                                    <td>{{ arCentro.nombre }}</td>
+                                    <td style="text-align: center">
+                                        <a href="javascript:abrirVentana3('{{ path('cliente_centro_nuevo', {'id': arCentro.codigoCentroPk, 'codigoCliente': arCliente.codigoClientePk }) }}', 'NuevoObligacion', 600, 1200)"><i class="fa fa-edit fa-lg"></i></a>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <input type="checkbox" name="ChkSeleccionarCentros[]" value="{{ arCentro.codigoCentroPk }}"/>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <footer class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3" >
+                                <div style="float: right; margin-right: 5px !important;" class="btn-group" role="group" aria-label="...">
+                                    <a class="btn btn-sm btn-default" href="javascript:abrirVentana3('{{ path('cliente_centro_nuevo', {'id': 0, 'codigoCliente': arCliente.codigoClientePk}) }}', 'NuevoObligacion', 600, 1200)">Nuevo</a>
+                                    {{ form_widget(form.btnEliminarCentro) }}
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
     {{ form_end(form) }}
 {% endblock %}

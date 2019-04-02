@@ -40,4 +40,84 @@ class Centro
      */
     protected $mallasCentroRel;
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoCentroPk()
+    {
+        return $this->codigoCentroPk;
+    }
+
+    /**
+     * @param mixed $codigoCentroPk
+     */
+    public function setCodigoCentroPk($codigoCentroPk): void
+    {
+        $this->codigoCentroPk = $codigoCentroPk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoClienteFk()
+    {
+        return $this->codigoClienteFk;
+    }
+
+    /**
+     * @param mixed $codigoClienteFk
+     */
+    public function setCodigoClienteFk($codigoClienteFk): void
+    {
+        $this->codigoClienteFk = $codigoClienteFk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClienteRel()
+    {
+        return $this->clienteRel;
+    }
+
+    /**
+     * @param mixed $clienteRel
+     */
+    public function setClienteRel($clienteRel): void
+    {
+        $this->clienteRel = $clienteRel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMallasCentroRel()
+    {
+        return $this->mallasCentroRel;
+    }
+
+    /**
+     * @param mixed $mallasCentroRel
+     */
+    public function setMallasCentroRel($mallasCentroRel): void
+    {
+        $this->mallasCentroRel = $mallasCentroRel;
+    }
+
 }
