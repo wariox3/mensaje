@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Clasificacion;
 //use App\Form\Type\clasificacionType;
+use App\Entity\Subgrupo;
 use App\Form\Type\clasificacionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -46,7 +47,8 @@ class ClasificacionController  extends  Controller
 
             if($form->get('btnEliminar')->isClicked()){
                 $arGrupo = $request->request->get('ChkSeleccionar');
-                $this->get("UtilidadesModelo")->eliminar(Grupo::class, $arGrupo);
+                $this->get("UtilidadesModelo")->eliminar(Clasificacion::class, $arGrupo);
+                return $this->redirect($this->generateUrl('clasificacion_lista'));
 
             }
         }
@@ -63,7 +65,7 @@ class ClasificacionController  extends  Controller
      */
     public function nuevo(Request $request, $id){
        $em = $this->getDoctrine()->getManager();
-       $arclasificacion = $em->getRepository(clasificacion::class)->detalle($id);
+       $arclasificacion = $em->getRepository(clasificacion::class)->find($id);
         $booOcultarElementos = true;
         if(is_null($arclasificacion)){
             $booOcultarElementos = false;
