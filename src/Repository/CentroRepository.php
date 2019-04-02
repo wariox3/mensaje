@@ -25,6 +25,13 @@ class CentroRepository extends ServiceEntityRepository
             ->leftJoin('ce.clienteRel' , 'cl')
             ->where('cl.codigoClientePk = ' . $codigoCLiente);
 
+        if ($session->get('filtroClaveCentro') != '') {
+            $queryBuilder->andWhere("ce.codigoCentroPk = '{$session->get('filtroClaveCentro')}'");
+        }
+        if ($session->get('filtroNombreCentro') != '') {
+            $queryBuilder->andWhere("ce.nombre = '{$session->get('filtroNombreCentro')}'");
+        }
+
         return $queryBuilder;
 
     }

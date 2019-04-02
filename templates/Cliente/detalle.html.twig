@@ -27,6 +27,33 @@
         <div class="tab-content">
             <div id="centros" class="tab-pane active">
                 <section class="panel">
+                    <header class="panel-heading">
+                        <div class="panel-actions">
+                            <a href="#" class="fa fa-caret-down"></a>
+                        </div>
+                        <h2 class="panel-title">Filtro de busqueda</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">Clave:</label>
+                            <div class="col-sm-2">
+                                {{ form_widget(form.claveCentro) }}
+                            </div>
+                            <label class="col-sm-1 control-label">Nombre:</label>
+                            <div class="col-sm-2">
+                                {{ form_widget(form.nombreCentro) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                {{ form_widget(form.btnFiltrarCentro, { 'attr': {'class': 'btn btn-primary', 'style':'float:right'} }) }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="panel">
                     <div class="panel-body">
                         <table class="table table-condensed table-bordered table-hover mb-none">
                             <thead>

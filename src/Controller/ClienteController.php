@@ -81,18 +81,30 @@ class ClienteController extends  Controller
      */
     public function detalle(Request $request, $id)
     {
+        $session = new Session();
         $em = $this->getDoctrine()->getManager();
         $paginator = $this->get('knp_paginator');
         $arCliente = $em->getRepository(Cliente::class)->find($id);
         $form = $this->createFormBuilder()
+            ->add('claveCentro', TextType::class, ['required' => false, 'label' => 'Clave', 'attr' => ['class' => 'btn btn-sm btn-default']])
+            ->add('nombreCentro', TextType::class, ['required' => false, 'label' => 'Nombre', 'attr' => ['class' => 'btn btn-sm btn-default']])
             ->add('btnEliminarCentro', SubmitType::class, ['label' => 'Eliminar', 'attr' => ['class' => 'btn btn-sm btn-default']])
-        ->getForm();
+            ->add('btnFiltrarCentro', SubmitType::class, ['label' => 'Filtrar', 'attr' => ['class' => 'btn btn-sm btn-default']])
+            ->getForm();
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($form->get('btnFiltrarCentro')->isClicked()) {
+                $session->set('filtroClaveCentro', $form->get('claveCentro')->getData());
+                $session->set('filtroNombreCentro', $form->get('nombreCentro')->getData());
+            }
+
             if ($form->get('btnEliminarCentro')->isClicked()) {
                 $arrClientesSeleccionados = $request->request->get('ChkSeleccionarCentros');
-                $this->get("UtilidadesModelo")->eliminar(Cliente::class, $arrClientesSeleccionados);
+                $this->get("UtilidadesModelo")->eliminar(centro::class, $arrClientesSeleccionados);
+                return $this->redirect($this->generateUrl('cliente_detalle', ['id' => $id]));
+
             }
 
             return $this->redirect($this->generateUrl('cliente_detalle', ['id' => $id]));
