@@ -45,6 +45,7 @@ class GrupoController extends Controller
             if($form->get('btnEliminar')->isClicked()){
                 $arGrupo = $request->request->get('ChkSeleccionar');
                 $this->get("UtilidadesModelo")->eliminar(Grupo::class, $arGrupo);
+                return $this->redirect($this->generateUrl('grupo_lista'));
 
             }
         }
