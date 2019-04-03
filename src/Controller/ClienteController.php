@@ -86,8 +86,8 @@ class ClienteController extends  Controller
         $paginator = $this->get('knp_paginator');
         $arCliente = $em->getRepository(Cliente::class)->find($id);
         $form = $this->createFormBuilder()
-            ->add('claveCentro', TextType::class, ['required' => false, 'label' => 'Clave', 'attr' => ['class' => 'btn btn-sm btn-default']])
-            ->add('nombreCentro', TextType::class, ['required' => false, 'label' => 'Nombre', 'attr' => ['class' => 'btn btn-sm btn-default']])
+            ->add('claveCentro', TextType::class,['required' => false, 'data' => $session->get('filtroClaveCentro')])
+            ->add('nombreCentro', TextType::class,['required' => false, 'data' => $session->get('filtroNombreCentro')])
             ->add('btnEliminarCentro', SubmitType::class, ['label' => 'Eliminar', 'attr' => ['class' => 'btn btn-sm btn-default']])
             ->add('btnFiltrarCentro', SubmitType::class, ['label' => 'Filtrar', 'attr' => ['class' => 'btn btn-sm btn-default']])
             ->getForm();
