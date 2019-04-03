@@ -29,7 +29,7 @@ class CentroRepository extends ServiceEntityRepository
             $queryBuilder->andWhere("ce.codigoCentroPk = '{$session->get('filtroClaveCentro')}'");
         }
         if ($session->get('filtroNombreCentro') != '') {
-            $queryBuilder->andWhere("ce.nombre = '{$session->get('filtroNombreCentro')}'");
+            $queryBuilder->andWhere("ce.nombre LIKE '%{$session->get('filtroNombreCentro')}%' ");
         }
 
         return $queryBuilder;
