@@ -361,6 +361,22 @@ class Obligacion
         $this->clasificacionRel = $clasificacionRel;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPatronesObligacionesObligacionRel()
+    {
+        return $this->patronesObligacionesObligacionRel;
+    }
+
+    /**
+     * @param mixed $patronesObligacionesObligacionRel
+     */
+    public function setPatronesObligacionesObligacionRel($patronesObligacionesObligacionRel): void
+    {
+        $this->patronesObligacionesObligacionRel = $patronesObligacionesObligacionRel;
+    }
+
 
 
 }

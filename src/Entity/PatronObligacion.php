@@ -41,5 +41,86 @@ class PatronObligacion
      */
     private $obligacionRel;
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoPatronObligacionPk()
+    {
+        return $this->codigoPatronObligacionPk;
+    }
+
+    /**
+     * @param mixed $codigoPatronObligacionPk
+     */
+    public function setCodigoPatronObligacionPk($codigoPatronObligacionPk): void
+    {
+        $this->codigoPatronObligacionPk = $codigoPatronObligacionPk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoPatronFk()
+    {
+        return $this->codigoPatronFk;
+    }
+
+    /**
+     * @param mixed $codigoPatronFk
+     */
+    public function setCodigoPatronFk($codigoPatronFk): void
+    {
+        $this->codigoPatronFk = $codigoPatronFk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoObligacionFk()
+    {
+        return $this->codigoObligacionFk;
+    }
+
+    /**
+     * @param mixed $codigoObligacionFk
+     */
+    public function setCodigoObligacionFk($codigoObligacionFk): void
+    {
+        $this->codigoObligacionFk = $codigoObligacionFk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatronRel()
+    {
+        return $this->patronRel;
+    }
+
+    /**
+     * @param mixed $patronRel
+     */
+    public function setPatronRel($patronRel): void
+    {
+        $this->patronRel = $patronRel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObligacionRel()
+    {
+        return $this->obligacionRel;
+    }
+
+    /**
+     * @param mixed $obligacionRel
+     */
+    public function setObligacionRel($obligacionRel): void
+    {
+        $this->obligacionRel = $obligacionRel;
+    }
+
+
 
 }

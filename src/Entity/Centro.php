@@ -125,4 +125,22 @@ class Centro
         $this->mallasCentroRel = $mallasCentroRel;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCentrosPatronesCentroRel()
+    {
+        return $this->centrosPatronesCentroRel;
+    }
+
+    /**
+     * @param mixed $centrosPatronesCentroRel
+     */
+    public function setCentrosPatronesCentroRel($centrosPatronesCentroRel): void
+    {
+        $this->centrosPatronesCentroRel = $centrosPatronesCentroRel;
+    }
+
+
+
 }

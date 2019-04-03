@@ -34,5 +34,70 @@ class Patron
      */
     protected $centrosPatronesPatronRel;
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoPatronPk()
+    {
+        return $this->codigoPatronPk;
+    }
+
+    /**
+     * @param mixed $codigoPatronPk
+     */
+    public function setCodigoPatronPk($codigoPatronPk): void
+    {
+        $this->codigoPatronPk = $codigoPatronPk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatronesObligacionesPatronRel()
+    {
+        return $this->patronesObligacionesPatronRel;
+    }
+
+    /**
+     * @param mixed $patronesObligacionesPatronRel
+     */
+    public function setPatronesObligacionesPatronRel($patronesObligacionesPatronRel): void
+    {
+        $this->patronesObligacionesPatronRel = $patronesObligacionesPatronRel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCentrosPatronesPatronRel()
+    {
+        return $this->centrosPatronesPatronRel;
+    }
+
+    /**
+     * @param mixed $centrosPatronesPatronRel
+     */
+    public function setCentrosPatronesPatronRel($centrosPatronesPatronRel): void
+    {
+        $this->centrosPatronesPatronRel = $centrosPatronesPatronRel;
+    }
+
+
 
 }

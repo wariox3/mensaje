@@ -41,5 +41,86 @@ class CentroPatron
      */
     private $patronRel;
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoCentroPatronPk()
+    {
+        return $this->codigoCentroPatronPk;
+    }
+
+    /**
+     * @param mixed $codigoCentroPatronPk
+     */
+    public function setCodigoCentroPatronPk($codigoCentroPatronPk): void
+    {
+        $this->codigoCentroPatronPk = $codigoCentroPatronPk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoCentroFk()
+    {
+        return $this->codigoCentroFk;
+    }
+
+    /**
+     * @param mixed $codigoCentroFk
+     */
+    public function setCodigoCentroFk($codigoCentroFk): void
+    {
+        $this->codigoCentroFk = $codigoCentroFk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoPatronFk()
+    {
+        return $this->codigoPatronFk;
+    }
+
+    /**
+     * @param mixed $codigoPatronFk
+     */
+    public function setCodigoPatronFk($codigoPatronFk): void
+    {
+        $this->codigoPatronFk = $codigoPatronFk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCentroRel()
+    {
+        return $this->centroRel;
+    }
+
+    /**
+     * @param mixed $centroRel
+     */
+    public function setCentroRel($centroRel): void
+    {
+        $this->centroRel = $centroRel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatronRel()
+    {
+        return $this->patronRel;
+    }
+
+    /**
+     * @param mixed $patronRel
+     */
+    public function setPatronRel($patronRel): void
+    {
+        $this->patronRel = $patronRel;
+    }
+
+
 
 }
