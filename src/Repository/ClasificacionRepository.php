@@ -31,16 +31,18 @@ class ClasificacionRepository extends ServiceEntityRepository
         $queryBuilder->orderBy('cl.codigoClasificacionPk', 'DESC');
 
         if ($session->get('filtroNombre') != '') {
-            $queryBuilder->andWhere("cl.nombre = '{$session->get('filtroNombre')}'");
+            $queryBuilder->andWhere("cl.nombre LIKE '%{$session->get('filtroNombre')}%'");
         }
         if ($session->get('filtroClave') != '') {
-            $queryBuilder->andWhere("cl.codigoClasificacionPk = '{$session->get('filtroClave')}'");
+            $queryBuilder->andWhere("cl.codigoClasificacionPk LIKE '%{$session->get('filtroClave')}%'");
         }
         if ($session->get('filtroGrupo') != '') {
-            $queryBuilder->andWhere("g.nombre = '{$session->get('filtroGrupo')}'");
+            $queryBuilder->andWhere("g.nombre LIKE '%{$session->get('filtroGrupo')}%'");
+
         }
         if ($session->get('filtroSubGrupo') != ''){
-            $queryBuilder->andWhere("sg.nombre = '{$session->get('filtroSubGrupo')}'");
+            $queryBuilder->andWhere("sg.nombre LIKE '%{$session->get('filtroSubGrupo')}%'");
+
         }
 
         return $queryBuilder;

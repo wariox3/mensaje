@@ -26,13 +26,14 @@ class SubgrupoRepository extends ServiceEntityRepository
         $queryBuilder->orderBy('sg.codigoSubgrupoPk', 'DESC');
 
         if ($session->get('filtroNombre') != ''){
-            $queryBuilder->andWhere("sg.nombre = '{$session->get('filtroNombre')}'");
+            $queryBuilder->andWhere("sg.nombre LIKE '%{$session->get('filtroNombre')}%'");
         }
         if ($session->get('filtroClave') != ''){
-            $queryBuilder->andWhere("sg.codigoSubgrupoPk = '{$session->get('filtroClave')}'");
+            $queryBuilder->andWhere("sg.codigoSubgrupoPk LIKE '%{$session->get('filtroClave')}%'");
         }
         if ($session->get('filtroGrupo') != ''){
-            $queryBuilder->andWhere("g.nombre = '{$session->get('filtroGrupo')}'");
+            $queryBuilder->andWhere("g.nombre LIKE '%{$session->get('filtroGrupo')}%'");
+
         }
         return $queryBuilder;
 

@@ -23,7 +23,7 @@ class GrupoRepository extends ServiceEntityRepository
         $queryBuilder->orderBy('gr.codigoGrupoPk', 'DESC');
 
         if ($session->get('filtroNombre') != ''){
-            $queryBuilder->andWhere("gr.nombre = '{$session->get('filtroNombre')}'");
+            $queryBuilder->andWhere("gr.nombre LIKE '%{$session->get('filtroNombre')}%'");
         }
         if ($session->get('filtroClave') != ''){
             $queryBuilder->andWhere("gr.codigoGrupoPk = '{$session->get('filtroClave')}'");
