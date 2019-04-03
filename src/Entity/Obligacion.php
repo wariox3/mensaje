@@ -101,6 +101,11 @@ class Obligacion
     private $matrizRel;
 
     /**
+     * @ORM\OneToMany(targetEntity="PatronObligacion", mappedBy="obligacionRel")
+     */
+    protected $patronesObligacionesObligacionRel;
+
+    /**
      * @return mixed
      */
     public function getCodigoObligacionPk()

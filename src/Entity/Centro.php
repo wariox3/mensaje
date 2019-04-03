@@ -36,6 +36,11 @@ class Centro
     private $clienteRel;
 
     /**
+     * @ORM\OneToMany(targetEntity="CentroPatron", mappedBy="centroRel")
+     */
+    protected $centrosPatronesCentroRel;
+
+    /**
      * @ORM\OneToMany(targetEntity="Malla", mappedBy="centroRel")
      */
     protected $mallasCentroRel;
